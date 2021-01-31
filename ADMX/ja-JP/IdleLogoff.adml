@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                           xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinition" 
+                           revision="1.0" schemaVersion="1.0">
+  <displayName >IdleLogoff</displayName>
+  <description ></description>
+  <resources>
+    <stringTable>
+      <string id="String_Cat_IdleLogoff">アイドルログオフ (IdleLogoff)</string>
+      <string id="String_TimeoutMin">タイムアウト値</string>
+      <string id="String_TimeoutMin_Help">"IdleLogoff.ps1"のパラメータです。
+ここで設定した時間内にユーザーによる操作が検知されなかった場合、ログオフ (または指定した動作) を実施します。
+既定値は5分です。
+
+「タイムアウト時の動作」も参照してください。</string>
+      <string id="String_LogoffAction">タイムアウト時の動作</string>
+      <string id="String_LogoffAction_Help">"IdleLogoff.ps1"のパラメータです。
+タイムアウト時の動作を指定します。
+既定値は「強制ログオフ」です。
+
+シャットダウンや再起動のように電源操作を伴う動作を実行するためには適切な権限が必要です。</string>
+      <string id="String_LogoffAction_Logoff">ログオフ</string>
+      <string id="String_LogoffAction_LogoffForce">強制ログオフ</string>
+      <string id="String_LogoffAction_Shutdown">シャットダウン</string>
+      <string id="String_LogoffAction_ShutdownForce">強制シャットダウン</string>
+      <string id="String_LogoffAction_Reboot">再起動</string>
+      <string id="String_LogoffAction_RebootForce">強制再起動</string>
+      <string id="String_LogoffAction_Disconnect">切断 (ロック)</string>
+    </stringTable>
+
+    <presentationTable>
+      <presentation id="Presentation_TimeoutMin">
+        <decimalTextBox refId="Decimal_TimeoutMin" defaultValue="5" spinStep="1">時間 (分):</decimalTextBox>
+      </presentation>
+      <presentation id="Presentation_LogoffAction_List">
+        <dropdownList refId="Presentation_LogoffAction_List_Item" defaultItem="1" noSort="true">実行する動作:</dropdownList>
+      </presentation>
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

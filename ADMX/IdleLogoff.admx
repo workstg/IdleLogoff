@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinition"
+                   revision="1.1" schemaVersion="1.0" >
+
+  <policyNamespaces>
+    <target prefix="IdleLogoff" namespace="Workstg.Policies.IdleLogoff" />
+    <using prefix="windows" namespace="Microsoft.Policies.Windows" />
+  </policyNamespaces>
+  <resources minRequiredRevision="1.0" />
+
+  <categories>
+    <category name="String_Cat_IdleLogoff" displayName="$(string.String_Cat_IdleLogoff)" explainText="$(string.String_Cat_IdleLogoff)" />
+  </categories>
+
+  <policies>
+     <policy name="String_TimeoutMin" class="User" displayName="$(string.String_TimeoutMin)" explainText="$(string.String_TimeoutMin_Help)" 
+            presentation="$(presentation.Presentation_TimeoutMin)" key="SOFTWARE\Workstg\IdleLogoff">
+      <parentCategory ref="String_Cat_IdleLogoff" />
+      <supportedOn ref="windows:SUPPORTED_Windows7" />
+      <elements>
+        <decimal id="Decimal_TimeoutMin" valueName="TimeoutMin" minValue="1" maxValue="1440" />
+      </elements>
+    </policy>
+
+    <policy name="String_LogoffAction" class="User" displayName="$(string.String_LogoffAction)" explainText="$(string.String_LogoffAction_Help)" 
+            presentation="$(presentation.Presentation_LogoffAction_List)" key="SOFTWARE\Workstg\IdleLogoff">
+      <parentCategory ref="String_Cat_IdleLogoff" />
+      <supportedOn ref="windows:SUPPORTED_Windows7" />
+      <elements>
+        <enum id="Presentation_LogoffAction_List_Item" valueName="LogoffAction" required="true">
+          <item displayName="$(string.String_LogoffAction_Logoff)">
+            <value>
+              <decimal value="0" />
+            </value>
+          </item>
+          <item displayName="$(string.String_LogoffAction_LogoffForce)">
+            <value>
+              <decimal value="4" />
+            </value>
+          </item>
+          <item displayName="$(string.String_LogoffAction_Shutdown)">
+            <value>
+              <decimal value="1" />
+            </value>
+          </item>
+          <item displayName="$(string.String_LogoffAction_ShutdownForce)">
+            <value>
+              <decimal value="5" />
+            </value>
+          </item>
+          <item displayName="$(string.String_LogoffAction_Reboot)">
+            <value>
+              <decimal value="2" />
+            </value>
+          </item>
+          <item displayName="$(string.String_LogoffAction_RebootForce)">
+            <value>
+              <decimal value="6" />
+            </value>
+          </item>
+          <item displayName="$(string.String_LogoffAction_Disconnect)">
+            <value>
+              <decimal value="255" />
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+  
+  </policies>
+</policyDefinitions>
